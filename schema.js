@@ -7,6 +7,7 @@ type Friend {
     lastName: String
     gender: String
     language: String
+    email: String
 }
 type Query {
     friend: Friend
