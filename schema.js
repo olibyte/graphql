@@ -1,4 +1,4 @@
-import { buildSchema } from 'graphQL';
+import { buildSchema } from 'graphql';
 
 const schema = buildSchema(`
 type Query {

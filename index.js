@@ -8,6 +8,12 @@ app.get('/', (req, res) => {
     res.send('GraphQL is amazing!');
 });
 
-const root = { hello: () => "Hi! I'm Oliver."}
+const root = { hello: () => "Hi! I'm Oliver."};
+
+app.use('/graphql',  graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+}));
 
 app.listen(8080, () => console.log('Running server on port localhost:8080/graphql'));
