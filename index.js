@@ -7,20 +7,39 @@ const app = express();
 app.get('/', (req, res) => {
     res.send('GraphQL is amazing!');
 });
-
-const root = { friend: () => {
-    return {
-        "id": 218142462,
-        "firstName": "Oliver",
-        "lastName": "Bennett",
-        "gender": "Male",
-        "language": "English",
-        "emails": [
-            { email: "me@me.com" },
-            { email: "another@me.com" }
-        ],
+class Friend {
+    constructor(id, { firstName, lastName, gender, language, email }) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.language = language;
+        this.email = email;
     }
-}};
+}
+
+const friendDatabase = {};
+
+const root = { 
+    friend: () => {
+        return {
+            "id": 218142462,
+            "firstName": "Oliver",
+            "lastName": "Bennett",
+            "gender": "Male",
+            "language": "English",
+            "emails": [
+                { email: "me@me.com" },
+                { email: "another@me.com" }
+            ],
+        }
+    },
+    createFriend: ({input}) => {
+        let id = require('crypto').randomBytes(10).toString('hex');
+        friendDatabase[id] = input;
+        return new Friend(id, input);
+    }
+};
 
 app.use('/graphql',  graphqlHTTP({
     schema: schema,
