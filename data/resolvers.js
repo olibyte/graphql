@@ -24,12 +24,10 @@ export const resolvers = {
 
             return new Promise((resolve, object) => {
                 newFriend.save((err) => {
-                    if(err) reject(err)
+                    if (err) reject(err)
                     else resolve(newFriend)
                 })
             })
         },
-    },   
+    },
 };
-
-export default resolvers;

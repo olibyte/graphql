@@ -1,4 +1,4 @@
-import { resolvers } from 'resolvers';
+import { resolvers } from './resolvers';
 import { makeExecutableSchema } from 'graphql-tools';
 
 const typeDefs = `
@@ -12,7 +12,7 @@ const typeDefs = `
         email: String
         contacts: [Contact]
     }
-    type: Alien {
+    type Alien {
         id: ID
         firstName: String
         lastName: String

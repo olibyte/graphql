@@ -44,7 +44,7 @@ const sequelize = new Sequelize('database', null, null, {
 const Aliens = sequelize.define('aliens', {
     firstName: { type: Sequelize.STRING },
     lastName: { type: Sequelize.STRING },
-    planet: { type: Sequelize.STRING }
+    planet: { type: Sequelize.STRING },
 });
 
 Aliens.sync({ force: true }).then(() => {
@@ -52,7 +52,7 @@ Aliens.sync({ force: true }).then(() => {
         Aliens.Create({
             firstName: casual._first_name,
             lastName: casual._last_name,
-            planet: casual.word
+            planet: casual.word,
         });
     });
 });

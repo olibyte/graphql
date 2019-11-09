@@ -8,9 +8,8 @@ app.get('/', (req, res) => {
     res.send('GraphQL is amazing!');
 });
 
-app.use('/graphql',  graphqlHTTP({
+app.use('/graphql', graphqlHTTP({
     schema: schema,
-    rootValue: root,
     graphiql: true,
 }));
 
